@@ -1,7 +1,9 @@
 <%= form_tag calculate_path do%>
-  <%= label_tag "Please, enter an arbitrary number of numeric values: "%>
+  <%= label_tag "Please, enter values for a, b and c inputs: "%>
   <br></br>
-  <%= text_field_tag 'values'%>
+
+  <%= render partial: "values" %>
   <br></br>
+  <hr>
   <%= submit_tag 'Submit' %>
 <% end %>

@@ -3,6 +3,9 @@ class EquationsController < ApplicationController
   end
 
   def calculate
-    render text: "THE VALUES ENTERED ARE #{params[:values]}"
+    a = params[:a_value]
+    b = params[:b_value]
+    c = params[:c_value]
+    render text: "THE VALUES ENTERED ARE #{a}, #{b}, #{c}"
   end
 end
