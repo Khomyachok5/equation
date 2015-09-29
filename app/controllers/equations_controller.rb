@@ -6,6 +6,6 @@ class EquationsController < ApplicationController
     a = params[:a_value]
     b = params[:b_value]
     c = params[:c_value]
-    render text: "THE VALUES ENTERED ARE #{a}, #{b}, #{c}"
+    #render text: "THE VALUES ENTERED ARE #{a}, #{b}, #{c}"
   end
 end
