@@ -10,7 +10,7 @@ class EquationsController < ApplicationController
     #render text: "THE DISCRIMINANT OF THE EQUATION IS #{discriminant} and the values entered are #{a}, #{b}, #{c}"
   end
 
-  def find_discriminant(a, b, c);
-    (b * b) − (4 * a * c)
+  def find_discriminant(a, b, c)
+    discriminant=(b*b)−(4*a*c)
   end
 end
