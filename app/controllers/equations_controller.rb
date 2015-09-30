@@ -18,7 +18,7 @@ class EquationsController < ApplicationController
           @answer =  "THE DISCRIMINANT OF THE EQUATION IS #{discriminant} and the values entered are #{a}, #{b}, #{c}. The roots of the equation are #{x1} and #{x2}"
         when discriminant == 0
           x1 = (-b + sqrt(discriminant)) / 2*a
-          @answer =  "THE DISCRIMINANT OF THE EQUATION IS #{discriminant} and the values entered are #{a}, #{b}, #{c}. The roots of the equation are #{x1}"
+          @answer =  "THE DISCRIMINANT OF THE EQUATION IS #{discriminant} and the values entered are #{a}, #{b}, #{c}. The root of the equation is #{x1}"
       end
     end
   end
