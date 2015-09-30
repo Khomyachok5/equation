@@ -37,10 +37,12 @@ class EquationsController < ApplicationController
 
   def additional_points(a, b, c)
     coordinates = []
-    -9.upto(9) do |x| 
+    -9.upto(9) do |x| x *= 2
       y = a*(x*x) + b*x + c
       coordinates << {x => y}
     end
+
+    
     coordinates
   end
 

@@ -11,8 +11,14 @@
     <% end %>
     <%= content_tag :div, '', id: "element_y_name_#{index}", data: {y: point.each_value.first} do %>
     <% end %>
-    <%= point.each_value.first %>
     <br>
+  <% end %>
+</div>
+
+<div id="vertext">
+  <%= content_tag :div, '', id: "vertex_x", data: {x: @vertex.first} do %>
+  <% end %>
+  <%= content_tag :div, '', id: "vertex_y", data: {y: @vertex.second} do %>
   <% end %>
 </div>
 
