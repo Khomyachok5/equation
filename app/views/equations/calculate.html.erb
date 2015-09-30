@@ -7,9 +7,12 @@
 <div id="coordinates">
   <%- @points.each_with_index do |point, index| %>
     <%= "The additional point number #{index+1} found for the parabola has the following co-ordinates: #{point}"%>
+    <%= content_tag :div, '', id: "element_name_#{index}", data: {x: point.each_key.first} do %>
+    <% end %>
+    <%= content_tag :div, '', id: "element_y_name_#{index}", data: {y: point.each_value.first} do %>
+    <% end %>
+    <%= point.each_value.first %>
     <br>
   <% end %>
 </div>
 
-<%= content_tag :div, class: "temp_information", data: {points: @points} do %>
-<% end %>
