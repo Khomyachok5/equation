@@ -3,3 +3,10 @@
 <div id="answer">
   <%= @answer %>
 </div>
+
+<div id="coordinates">
+  <%- @points.each_with_index do |point, index| %>
+    <%= "The additional point number #{index+1} found for the parabola has the following co-ordinates: #{point}"%>
+    <br>
+  <% end %>
+</div>

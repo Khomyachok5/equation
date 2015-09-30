@@ -21,6 +21,7 @@ class EquationsController < ApplicationController
           x1 = (-b + sqrt(discriminant)) / 2*a
           @answer =  "THE DISCRIMINANT OF THE EQUATION IS #{discriminant} and the values entered are #{a}, #{b}, #{c}. The root of the equation is #{x1}. The vertex of the parabola should be at the following co-ordinates: X axis at #{@vertex[0]}, Y axis at #{@vertex[1]}"
       end
+      @points = additional_points(a, b, c)
     end
   end
 
@@ -35,7 +36,12 @@ class EquationsController < ApplicationController
   end
 
   def additional_points(a, b, c)
-    
+    coordinates = []
+    0.upto(10) do |x| 
+      y = a*(x*x) + b*x + c
+      coordinates << {x => y}
+    end
+    coordinates
   end
 
 end
