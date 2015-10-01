@@ -1,7 +1,12 @@
 $(function() {
   console.log( "ready!" );
+  var x_array = [];
+  var y_array = [];
   var index;
   var a =  Array.prototype.slice.call($('.element_name'), 0)
+  for (index = 0; index < a.length; ++index) {
+    x_array.push($(a[index]).data('x'));
+  }
   var chart = c3.generate({
       bindto: '#chart',
       data: {
@@ -9,9 +14,7 @@ $(function() {
         y: 'y',
         columns: [
           ['x', $('#vertex_x').data('x'),
-            for (index = 0; index < a.length; ++index) {
-              a[index].data('x');
-            } ],
+                                       ],
           ['y', $('#vertex_y').data('y'),
             $('#element_y_name_0').data('y'), 
             $('#element_y_name_1').data('y'),
