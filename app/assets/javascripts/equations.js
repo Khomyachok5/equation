@@ -2,6 +2,7 @@ $(function() {
   console.log( "ready!" );
   var x_array = [];
   var y_array = [];
+  x_array.push('x', $('#vertex_x').data('x'))
   var index;
   var a =  Array.prototype.slice.call($('.element_name'), 0)
   for (index = 0; index < a.length; ++index) {
@@ -13,8 +14,7 @@ $(function() {
         x: 'x',
         y: 'y',
         columns: [
-          ['x', $('#vertex_x').data('x'),
-                                       ],
+          x_array,
           ['y', $('#vertex_y').data('y'),
             $('#element_y_name_0').data('y'), 
             $('#element_y_name_1').data('y'),
