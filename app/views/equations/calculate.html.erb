@@ -9,7 +9,7 @@
     <%= "The additional point number #{index+1} found for the parabola has the following co-ordinates: #{point}"%>
     <%= content_tag :div, '', class: "element_name", data: {x: point.each_key.first} do %>
     <% end %>
-    <%= content_tag :div, '', id: "element_y_name_#{index}", data: {y: point.each_value.first} do %>
+    <%= content_tag :div, '', class: "element_y", data: {y: point.each_value.first} do %>
     <% end %>
     <br>
   <% end %>
