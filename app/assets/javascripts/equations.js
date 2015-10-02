@@ -22,13 +22,14 @@ $(function() {
            }
       },
 
-      data: {
-
-        axis: {
+      axis: {
           x: {
-             show: false
+             show: true,
+             max: 7
             }
-        },
+      },
+
+      data: {
 
         xs: {
             'data_y': 'data_x'
