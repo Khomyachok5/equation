@@ -25,6 +25,8 @@ class EquationsController < ApplicationController
     end
   end
 
+  private
+
   def find_discriminant(a, b, c)
     discriminant=(b*b)-(4*a*c)
   end
@@ -37,7 +39,7 @@ class EquationsController < ApplicationController
 
   def additional_points(a, b, c, vertex)
     coordinates = []
-    (vertex.first-5).upto(vertex.first+7) do |x|
+    (vertex.first-10).upto(vertex.first+10) do |x|
       y = a*(x*x) + b*x + c
       coordinates << {x => y}
     end
