@@ -15,11 +15,18 @@ $(function() {
   }
   var chart = c3.generate({
       bindto: '#chart',
+
+      axis: {
+        y: {
+            max: 7
+           }
+      },
+
       data: {
 
         axis: {
           x: {
-             show: true
+             show: false
             }
         },
 
