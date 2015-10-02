@@ -14,13 +14,6 @@ $(function() {
     y_points.push($(b[index]).data('y'));
   }
 
-  var ticks = [];
-  for (index = -100; index < 100; ++index) {
-    ticks.push(index);
-  }
-
-
-
   var chart = c3.generate({
       bindto: '#chart',
 
@@ -30,7 +23,7 @@ $(function() {
             tick: {
                count: 7,
                fit: true,
-               values: y_points
+               values: y_points, 
               }, 
             padding: {
               top: 0,
@@ -45,6 +38,11 @@ $(function() {
               fit: true,
               values: x_points,
               outer: true
+              },
+
+            padding: {
+              left: 1,
+              right: 0,
               }
             }
       },
