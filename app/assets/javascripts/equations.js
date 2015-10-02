@@ -13,27 +13,42 @@ $(function() {
   for (index = 0; index < b.length; ++index) {
     y_points.push($(b[index]).data('y'));
   }
+
+  var ticks = [];
+  for (index = -100; index < 100; ++index) {
+    ticks.push(index);
+  }
+
+
+
   var chart = c3.generate({
       bindto: '#chart',
 
       axis: {
         y: {
             show: true,
-            max: 100,
+            max: 50,
+            min: -50,
             tick: {
                count: 7,
                fit: true,
-               values: [0]
+               values: ticks
+              }, 
+            padding: {
+              top: 0,
+              bottom: 0
               }
            },
 
         x: {
             show: true,
-            max: 100,
+            max: 50,
+            min: -50,
             tick: {
               count: 7,
               fit: true,
-              values: [0]
+              values: ticks,
+              outer: true
               }
             }
       },
@@ -53,4 +68,9 @@ $(function() {
         ]
       }
   })
+
+  chart.resize({
+  height: 1400,
+  width: 1500
+});
 });
