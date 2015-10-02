@@ -18,14 +18,23 @@ $(function() {
 
       axis: {
         y: {
-            max: 7
-           }
-      },
+            show: true,
+            max: 100,
+            tick: {
+               count: 7,
+               fit: true,
+               values: [0]
+              }
+           },
 
-      axis: {
-          x: {
-             show: true,
-             max: 7
+        x: {
+            show: true,
+            max: 100,
+            tick: {
+              count: 7,
+              fit: true,
+              values: [0]
+              }
             }
       },
 
