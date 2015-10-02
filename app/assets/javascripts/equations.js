@@ -27,12 +27,10 @@ $(function() {
       axis: {
         y: {
             show: true,
-            max: 50,
-            min: -50,
             tick: {
                count: 7,
                fit: true,
-               values: ticks
+               values: y_points
               }, 
             padding: {
               top: 0,
@@ -42,12 +40,10 @@ $(function() {
 
         x: {
             show: true,
-            max: 50,
-            min: -50,
             tick: {
               count: 7,
               fit: true,
-              values: ticks,
+              values: x_points,
               outer: true
               }
             }
