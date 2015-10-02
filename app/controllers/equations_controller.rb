@@ -37,11 +37,10 @@ class EquationsController < ApplicationController
 
   def additional_points(a, b, c, vertex)
     coordinates = []
-    (vertex.first-1000).upto(vertex.first+1000) do |x| x *= 2
+    (vertex.first-5).upto(vertex.first+5) do |x|
       y = a*(x*x) + b*x + c
       coordinates << {x => y}
     end
     coordinates
   end
-
 end
