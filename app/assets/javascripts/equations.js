@@ -60,7 +60,17 @@ $(function() {
           x_points,
           y_points
         ]
-      }
+      },
+
+        grid: {
+            y: {
+                  lines: [{value: 0, text: 'Y axis 0 value'}]
+                },
+
+            x: {
+                  lines: [{value: 0, text: 'X axis 0 value'}]
+                }
+        }
   })
 
   chart.resize({
