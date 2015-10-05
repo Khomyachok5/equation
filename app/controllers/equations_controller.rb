@@ -25,6 +25,10 @@ class EquationsController < ApplicationController
     end
   end
 
+  def build_from_file
+    render text: "THE FOLLOWING FILE HAS BEEN UPLOADED BY THE USER: #{params[:CSV]}"
+  end
+
   private
 
   def find_discriminant(a, b, c)

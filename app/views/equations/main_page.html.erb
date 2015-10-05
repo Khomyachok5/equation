@@ -4,7 +4,14 @@
 
   <%= render partial: "values" %>
   <br></br>
-  <%= button_tag "Add new"%>
-  <hr>
   <%= submit_tag 'Submit' %>
+<% end %>
+<hr>
+<br>
+<p>Alternatively, please select a CSV file to build multiple graphs</p>
+<%= form_tag csv_path do%>
+  <%= file_field_tag 'CSV' %>
+  <br>
+  <br>
+  <%= submit_tag "Build the parabolas!" %>
 <% end %>
