@@ -1,5 +1,7 @@
 class EquationsController < ApplicationController
   include Math
+  require 'csv'
+
   def main_page
   end
 
@@ -26,7 +28,10 @@ class EquationsController < ApplicationController
   end
 
   def build_from_file
-    render text: "THE FOLLOWING FILE HAS BEEN UPLOADED BY THE USER: #{params[:CSV]}"
+    #render text: "THE FOLLOWING FILE HAS BEEN UPLOADED BY THE USER: #{params[:CSV]}"
+    file = params[:file].read
+    @arr_of_arrs = CSV.parse(file)
+
   end
 
   private

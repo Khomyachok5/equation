@@ -9,8 +9,8 @@
 <hr>
 <br>
 <p>Alternatively, please select a CSV file to build multiple graphs</p>
-<%= form_tag csv_path do%>
-  <%= file_field_tag 'CSV' %>
+<%= form_tag csv_path, multipart: true do%>
+  <%= file_field_tag :file %>
   <br>
   <br>
   <%= submit_tag "Build the parabolas!" %>
