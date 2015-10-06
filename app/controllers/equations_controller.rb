@@ -30,8 +30,7 @@ class EquationsController < ApplicationController
   def build_from_file
     #render text: "THE FOLLOWING FILE HAS BEEN UPLOADED BY THE USER: #{params[:CSV]}"
     file = params[:file].read
-    @arr_of_arrs = CSV.parse(file)
-
+    @array = CSV.parse(file).first
   end
 
   private
