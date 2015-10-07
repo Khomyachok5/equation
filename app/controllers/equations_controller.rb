@@ -5,10 +5,7 @@ class EquationsController < ApplicationController
   def main_page
   end
 
-  def calculate
-    a = params[:a_value].to_i
-    b = params[:b_value].to_i
-    c = params[:c_value].to_i
+  def calculate(a,b,c)
     discriminant = find_discriminant(a, b, c)
     if discriminant < 0
       @answer =  "The discriminant of the equation is negative, there are no roots"
@@ -27,21 +24,32 @@ class EquationsController < ApplicationController
     end
   end
 
-  def build_from_file
-    file = params[:file].read
-    @array = CSV.parse(file).first
-    count = @array.count
-    #Make @array modulo 3 by adding elements if required. Code tested
-    if count % 3 != 0
-      (3 - (count % 3)).times do
-        @array << 0
+  def handle_input
+    if params[:a_value] || params[:b_value] || params[:c_value]
+      a = params[:a_value].to_i
+      b = params[:b_value].to_i
+      c = params[:c_value].to_i
+
+      calculate(a, b, c)
+      render template: "equations/calculate"
+     
+    elsif params[:file]
+      file = params[:file].read
+      @array = CSV.parse(file).first
+      count = @array.count
+      #Make @array modulo 3 by adding elements if required. Code tested
+      if count % 3 != 0
+        (3 - (count % 3)).times do
+          @array << 0
+        end
+        flash.notice = "The number of values supplied in the CSV file was not divisible by 3, so we added two additional elements to be able to build the parabola. The arguments supplied now look as follows: #{@array}"
       end
-      flash.notice = "The number of values supplied in the CSV file was not divisible by 3, so we added two additional elements to be able to build the parabola. The arguments supplied now look as follows: #{@array}"
+
+      @array_split = @array.each_slice(3).count#.each_with_index do |p, i|
+        
+      #end
     end
 
-    @array_split = @array.each_slice(3).count#.each_with_index do |p, i|
-      
-    #end
 
   end
 

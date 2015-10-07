@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'equations#main_page'
-  post 'equation', to: "equations#calculate", as: "calculate"
-  post 'csv', to: "equations#build_from_file", as: "csv"
+  post 'equation', to: "equations#handle_input", as: "input"
+  #post 'csv', to: "equations#build_from_file", as: "csv"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
