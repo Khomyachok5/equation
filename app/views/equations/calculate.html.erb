@@ -5,6 +5,13 @@
   <%= @answer %>
 </div>
 
+<%= content_tag :div, '', id: "charts_placeholder", data: {parabolas: @total_pairs} do %>
+  <%- @total_pairs.each_with_index do |point, index| %>
+    <%= content_tag :div, '', id: "chart_#{index}" do %>
+    <% end %>
+  <% end %>
+<% end %>
+
 <div id="coordinates">
   <%- @points.each_with_index do |point, index| %>
     <%= "The additional point number #{index+1} found for the parabola has the following co-ordinates: #{point}"%>

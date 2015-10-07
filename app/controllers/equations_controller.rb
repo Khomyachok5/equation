@@ -37,7 +37,6 @@ class EquationsController < ApplicationController
       file = params[:file].read
       @array = CSV.parse(file).first
       count = @array.count
-      #Make @array modulo 3 by adding elements if required. Code tested
       if count % 3 != 0
         (3 - (count % 3)).times do
           @array << 0
@@ -45,8 +44,10 @@ class EquationsController < ApplicationController
         flash.notice = "The number of values supplied in the CSV file was not divisible by 3, so we added two additional elements to be able to build the parabola. The arguments supplied now look as follows: #{@array}"
       end
 
+      @total_pairs = []
+
       @array_split = @array.each_slice(3).each_with_index do |pair, i|
-        calculate(pair[0].to_i, pair[1].to_i, pair[2].to_i)
+        @total_pairs << calculate(pair[0].to_i, pair[1].to_i, pair[2].to_i)
       end
       render template: "equations/calculate"
     end
