@@ -41,7 +41,7 @@ class EquationsController < ApplicationController
         (3 - (count % 3)).times do
           @array << 0
         end
-        flash.notice = "The number of values supplied in the CSV file was not divisible by 3, so we added two additional elements to be able to build the parabola. The arguments supplied now look as follows: #{@array}"
+        flash.notice = "The number of values supplied in the CSV file was not divisible by 3, so we added #{3 - (count % 3)} additional elements to be able to build the parabola. The arguments supplied now look as follows: #{@array}"
       end
 
       @total_pairs = []

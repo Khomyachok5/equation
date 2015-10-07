@@ -1,5 +1,12 @@
 $(function() {
   console.log( "ready!" );
+
+  var parent_array = $('#charts_placeholder').data('parabolas');
+  alert(parent_array.length);
+  /*
+
+
+
   var x_points = [];
   var y_points = [];
   x_points.push('data_x', $('#vertex_x').data('x'))
@@ -77,4 +84,5 @@ $(function() {
   height: 1400,
   width: 1500
 });
+*/
 });
