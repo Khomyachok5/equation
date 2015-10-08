@@ -7,23 +7,22 @@ class EquationsController < ApplicationController
 
   def calculate(a,b,c, status_array)
     discriminant = find_discriminant(a, b, c)
-    if discriminant < 0
-      status_array << "Entered values for this parabola are #{a}, #{b}, #{c}. The discriminant of the equation is negative, there are no roots"
       #@answer =  "The discriminant of the equation is negative, there are no roots"
-    else
-      @vertex = find_vertex(a, b, c)
-      case
-        when discriminant > 0
-          x1 = (-b + sqrt(discriminant)) / 2*a
-          x2 = (-b - sqrt(discriminant)) / 2*a
+    @vertex = find_vertex(a, b, c)
+    case
+      when discriminant < 0
+        status_array << "Entered values for this parabola are #{a}, #{b}, #{c}. The discriminant of the equation is negative, there are no roots"
 
-          status_array << "THE DISCRIMINANT OF THE EQUATION IS #{discriminant} and the values entered are #{a}, #{b}, #{c}. The roots of the equation are #{x1} and #{x2}. The vertex of the parabola should be at the following co-ordinates: X axis at #{@vertex[0]}, Y axis at #{@vertex[1]}"
-        when discriminant == 0
-          x1 = (-b + sqrt(discriminant)) / 2*a
-          status_array << "THE DISCRIMINANT OF THE EQUATION IS #{discriminant} and the values entered are #{a}, #{b}, #{c}. The root of the equation is #{x1}. The vertex of the parabola should be at the following co-ordinates: X axis at #{@vertex[0]}, Y axis at #{@vertex[1]}"
-      end
-      @points = additional_points(a, b, c, @vertex)
-    end
+      when discriminant > 0
+        x1 = (-b + sqrt(discriminant)) / 2*a
+        x2 = (-b - sqrt(discriminant)) / 2*a
+
+        status_array << "THE DISCRIMINANT OF THE EQUATION IS #{discriminant} and the values entered are #{a}, #{b}, #{c}. The roots of the equation are #{x1} and #{x2}. The vertex of the parabola should be at the following co-ordinates: X axis at #{@vertex[0]}, Y axis at #{@vertex[1]}"
+      when discriminant == 0
+        x1 = (-b + sqrt(discriminant)) / 2*a
+        status_array << "THE DISCRIMINANT OF THE EQUATION IS #{discriminant} and the values entered are #{a}, #{b}, #{c}. The root of the equation is #{x1}. The vertex of the parabola should be at the following co-ordinates: X axis at #{@vertex[0]}, Y axis at #{@vertex[1]}"
+    end  
+    @points = additional_points(a, b, c, @vertex)
   end
 
   def handle_input

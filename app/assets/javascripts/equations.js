@@ -2,11 +2,45 @@ $(function() {
   console.log( "ready!" );
 
   var parent_array = $('#charts_placeholder').data('parabolas');
-  alert(parent_array.length);
+  // alert(parent_array.length);
+
+
+  for (index = 0; index < parent_array.length; ++index) {
+    var x_points = [];
+    var y_points = [];
+
+    //Object.keys(parent_array[index]).forEach(function(entry) { 
+      //x_points.push(entry)
+    // } );
+
+    //alert(x_points);
+
+    parent_array[index].forEach(function(entry) {
+      
+      for (var key in entry) {
+        x_points.push(key);
+        y_points.push(entry[key])
+      }
+
+      }); 
+
+    //alert(y_points);
+
+    /*Object.values(parent_array[index]).forEach(function(entry) { 
+      y_points.push(entry)
+    } ); */
+
+  }
+
+  //alert(x_points);
+
+
+  /* for (index = 0; index < parent_array.length; ++index) {
+    x_points.push(Object.keys(parent_array[index]));
+  } */
+  
+
   /*
-
-
-
   var x_points = [];
   var y_points = [];
   x_points.push('data_x', $('#vertex_x').data('x'))
