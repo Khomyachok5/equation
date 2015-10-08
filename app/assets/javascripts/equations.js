@@ -9,6 +9,10 @@ $(function() {
     var x_points = [];
     var y_points = [];
 
+    x_points.push('data_x');
+    y_points.push('data_y');
+
+
     //Object.keys(parent_array[index]).forEach(function(entry) { 
       //x_points.push(entry)
     // } );
@@ -21,8 +25,7 @@ $(function() {
         x_points.push(key);
         y_points.push(entry[key])
       }
-
-      }); 
+    });
 
     //alert(y_points);
 
@@ -30,33 +33,10 @@ $(function() {
       y_points.push(entry)
     } ); */
 
-  }
-
-  //alert(x_points);
-
-
-  /* for (index = 0; index < parent_array.length; ++index) {
-    x_points.push(Object.keys(parent_array[index]));
-  } */
-  
-
-  /*
-  var x_points = [];
-  var y_points = [];
-  x_points.push('data_x', $('#vertex_x').data('x'))
-  y_points.push('data_y', $('#vertex_y').data('y'))
-  var index;
-  var a =  Array.prototype.slice.call($('.element_name'), 0)
-  for (index = 0; index < a.length; ++index) {
-    x_points.push($(a[index]).data('x'));
-  }
-  var b =  Array.prototype.slice.call($('.element_y'), 0)
-  for (index = 0; index < b.length; ++index) {
-    y_points.push($(b[index]).data('y'));
-  }
-
-  var chart = c3.generate({
-      bindto: '#chart',
+    alert(y_points);
+    
+    var chart = c3.generate({
+      bindto: '#chart_2', //.concat(index),
 
       axis: {
         y: {
@@ -112,11 +92,38 @@ $(function() {
                   lines: [{value: 0, text: 'X axis 0 value'}]
                 }
         }
-  })
+    })
 
-  chart.resize({
-  height: 1400,
-  width: 1500
-});
-*/
+    chart.resize({
+    height: 1400,
+    width: 1500
+    });
+  };
+
+  //alert(x_points);
+
+
+  /* for (index = 0; index < parent_array.length; ++index) {
+    x_points.push(Object.keys(parent_array[index]));
+  } */
+  
+
+  /*
+  var x_points = [];
+  var y_points = [];
+  x_points.push('data_x', $('#vertex_x').data('x'))
+  y_points.push('data_y', $('#vertex_y').data('y'))
+  var index;
+  var a =  Array.prototype.slice.call($('.element_name'), 0)
+  for (index = 0; index < a.length; ++index) {
+    x_points.push($(a[index]).data('x'));
+  }
+  var b =  Array.prototype.slice.call($('.element_y'), 0)
+  for (index = 0; index < b.length; ++index) {
+    y_points.push($(b[index]).data('y'));
+  }
+
+  */
+
+
 });
