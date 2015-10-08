@@ -9,8 +9,8 @@ $(function() {
     var x_points = [];
     var y_points = [];
 
-    x_points.push('data_x');
-    y_points.push('data_y');
+    //x_points.push('data_x');
+    //y_points.push('data_y');
 
 
     //Object.keys(parent_array[index]).forEach(function(entry) { 
@@ -22,8 +22,8 @@ $(function() {
     parent_array[index].forEach(function(entry) {
       
       for (var key in entry) {
-        x_points.push(key);
-        y_points.push(entry[key])
+        x_points.push(parseInt(key));
+        y_points.push(parseInt(entry[key]))
       }
     });
 
@@ -33,10 +33,51 @@ $(function() {
       y_points.push(entry)
     } ); */
 
-    alert(y_points);
+    //alert(y_points);
+    drawChart(index, x_points, y_points)
+  }
     
-    var chart = c3.generate({
-      bindto: '#chart_2', //.concat(index),
+    
+
+  //alert(x_points);
+
+
+  /* for (index = 0; index < parent_array.length; ++index) {
+    x_points.push(Object.keys(parent_array[index]));
+  } */
+  
+
+  /*
+  var x_points = [];
+  var y_points = [];
+  x_points.push('data_x', $('#vertex_x').data('x'))
+  y_points.push('data_y', $('#vertex_y').data('y'))
+  var index;
+  var a =  Array.prototype.slice.call($('.element_name'), 0)
+  for (index = 0; index < a.length; ++index) {
+    x_points.push($(a[index]).data('x'));
+  }
+  var b =  Array.prototype.slice.call($('.element_y'), 0)
+  for (index = 0; index < b.length; ++index) {
+    y_points.push($(b[index]).data('y'));
+  }
+
+  */
+});
+
+
+function drawChart(index, x_points, y_points) { /* chart = */ 
+
+  alert(typeof(parseInt(x_points[0])));
+
+  x_points.unshift('data_x');
+  y_points.unshift('data_y');
+
+  alert(x_points);
+
+  c3.generate({
+
+      bindto: '#chart_'.concat(index),
 
       axis: {
         y: {
@@ -94,36 +135,8 @@ $(function() {
         }
     })
 
-    chart.resize({
-    height: 1400,
-    width: 1500
-    });
+    //chart.resize({
+    //height: 1400,
+    //width: 1500
+    //});
   };
-
-  //alert(x_points);
-
-
-  /* for (index = 0; index < parent_array.length; ++index) {
-    x_points.push(Object.keys(parent_array[index]));
-  } */
-  
-
-  /*
-  var x_points = [];
-  var y_points = [];
-  x_points.push('data_x', $('#vertex_x').data('x'))
-  y_points.push('data_y', $('#vertex_y').data('y'))
-  var index;
-  var a =  Array.prototype.slice.call($('.element_name'), 0)
-  for (index = 0; index < a.length; ++index) {
-    x_points.push($(a[index]).data('x'));
-  }
-  var b =  Array.prototype.slice.call($('.element_y'), 0)
-  for (index = 0; index < b.length; ++index) {
-    y_points.push($(b[index]).data('y'));
-  }
-
-  */
-
-
-});
