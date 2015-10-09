@@ -22,10 +22,13 @@ $(function() {
     parent_array[index].forEach(function(entry) {
       
       for (var key in entry) {
-        x_points.push(parseFloat(key));
-        y_points.push(parseFloat(entry[key]))
+        x_points.push(Number(Math.round(parseFloat(key)+'e2') +'e-2'));
+        y_points.push(Number(Math.round(parseFloat(entry[key])+'e2') +'e-2'));
+        //y_points.push(parseFloat(entry[key]))
       }
     });
+
+    //Number(Math.round(1.005+'e2')+'e-2');
 
     //alert(y_points);
 
