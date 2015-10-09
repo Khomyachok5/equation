@@ -70,8 +70,16 @@ function drawChart(index, x_points, y_points) { /* chart = */
 
   x_points.unshift('data_x');
   y_points.unshift('data_y');
+  y_points.push(0)
 
-  c3.generate({
+  axis_x = [];
+  axis_y = [];
+  for (var i = -5; i <= 5; i++) {
+    axis_x.push(i);
+    axis_y.push(i);
+  }
+
+  chart = c3.generate({
 
       bindto: '#chart_'.concat(index),
 
@@ -79,28 +87,19 @@ function drawChart(index, x_points, y_points) { /* chart = */
         y: {
             show: true,
             tick: {
-               count: 7,
-               fit: true,
+
+               fit: false,
                values: y_points, 
-              }, 
-            padding: {
-              top: 0,
-              bottom: 0
               }
            },
 
         x: {
             show: true,
             tick: {
-              count: 7,
-              fit: true,
-              values: x_points,
-              outer: true
-              },
 
-            padding: {
-              left: 1,
-              right: 0,
+              fit: false,
+              values: axis_x,
+              outer: false
               }
             }
       },
@@ -131,8 +130,8 @@ function drawChart(index, x_points, y_points) { /* chart = */
         }
     })
 
-    //chart.resize({
-    //height: 1400,
-    //width: 1500
-    //});
+    chart.resize({
+    height: 1400,
+    width: 1500
+    });
   };

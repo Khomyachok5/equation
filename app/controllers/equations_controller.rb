@@ -11,7 +11,7 @@ class EquationsController < ApplicationController
     @vertex = find_vertex(a, b, c)
     case
       when discriminant < 0
-        status_array << "Entered values for this parabola are #{a}, #{b}, #{c}. The discriminant of the equation is negative, there are no roots"
+        status_array << "Entered values for this parabola are #{a}, #{b}, #{c}. The discriminant of the equation is negative, there are no roots. The vertex of the parabola should be at the following co-ordinates: X axis at #{@vertex[0]}, Y axis at #{@vertex[1]}"
 
       when discriminant > 0
         x1 = (-b + sqrt(discriminant)) / 2*a
