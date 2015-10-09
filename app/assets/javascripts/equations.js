@@ -71,6 +71,7 @@ function drawChart(index, x_points, y_points) { /* chart = */
   x_points.unshift('data_x');
   y_points.unshift('data_y');
   y_points.push(0)
+  //alert(y_points)
 
   axis_x = [];
   axis_y = [];
@@ -85,22 +86,25 @@ function drawChart(index, x_points, y_points) { /* chart = */
 
       axis: {
         y: {
+            //center: y_points[1],         
             show: true,
             tick: {
-
-               fit: false,
+               fit: true,
                values: y_points, 
-              }
+              },
+            padding : {
+              top: 0,
+              bottom : 20
+            }
            },
 
         x: {
             show: true,
             tick: {
+              multiline: false,
+              values: x_points,
+              },
 
-              fit: false,
-              values: axis_x,
-              outer: false
-              }
             }
       },
 
@@ -122,11 +126,11 @@ function drawChart(index, x_points, y_points) { /* chart = */
 
         grid: {
             y: {
-                  lines: [{value: 0, text: 'X axis 0 value'}]
+                  lines: [{value: 0, text: 'X axis 0 value', position: 'start'}]
                 },
 
             x: {
-                  lines: [{value: 0, text: 'Y axis 0 value'}]
+                  lines: [{value: 0, text: 'Y axis 0 value',  position: 'start'}]
                 }
         }
     })

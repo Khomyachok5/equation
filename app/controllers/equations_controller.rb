@@ -29,9 +29,9 @@ class EquationsController < ApplicationController
     @status = []
     @total_pairs = []
     if params[:a_value] || params[:b_value] || params[:c_value]
-      a = params[:a_value].to_i
-      b = params[:b_value].to_i
-      c = params[:c_value].to_i
+      a = params[:a_value].to_f
+      b = params[:b_value].to_f
+      c = params[:c_value].to_f
 
       @total_pairs << calculate(a, b, c, @status)
       render template: "equations/calculate"
@@ -48,7 +48,7 @@ class EquationsController < ApplicationController
       end
 
       @array_split = @array.each_slice(3).each_with_index do |pair, i|
-        @total_pairs << calculate(pair[0].to_i, pair[1].to_i, pair[2].to_i, @status)
+        @total_pairs << calculate(pair[0].to_f, pair[1].to_f, pair[2].to_f, @status)
       end
       render template: "equations/calculate"
     end
@@ -63,14 +63,16 @@ class EquationsController < ApplicationController
   end
 
   def find_vertex(a, b, c)
-    h = -b/(2*a)
+    h = (-b)/(2*a)
     k = a*(h*h) + b*h + c
+    puts "THE VALUES OF H AND K ARE #{h} AND #{k}"
     [h, k]
   end
 
   def additional_points(a, b, c, vertex)
     coordinates = []
-    (vertex.first-10).upto(vertex.first+10) do |x|
+    v_int = vertex.first.to_i
+    (v_int-10).upto(v_int+10) do |x|
       y = a*(x*x) + b*x + c
       coordinates << {x => y}
     end
