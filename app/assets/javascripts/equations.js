@@ -116,7 +116,8 @@ function drawChart(index, x_points, y_points) { /* chart = */
         columns: [
           x_points,
           y_points
-        ]
+        ],
+        type: 'spline'
       },
 
         grid: {

@@ -20,7 +20,7 @@ class EquationsController < ApplicationController
         status_array << "THE DISCRIMINANT OF THE EQUATION IS #{discriminant} and the values entered are #{a}, #{b}, #{c}. The roots of the equation are #{x1} and #{x2}. The vertex of the parabola should be at the following co-ordinates: X axis at #{@vertex[0]}, Y axis at #{@vertex[1]}"
       when discriminant == 0
         x1 = (-b + sqrt(discriminant)) / 2*a
-        status_array << "THE DISCRIMINANT OF THE EQUATION IS #{discriminant} and the values entered are #{a}, #{b}, #{c}. The root of the equation is #{x1}. The vertex of the parabola should be at the following co-ordinates: X axis at #{@vertex[0]}, Y axis at #{@vertex[1]}"
+        status_array << "The values entered are #{a}, #{b}, #{c}. The discriminant of the equation is #{discriminant}. The root of the equation is #{x1}. The vertex of the parabola should be at the following co-ordinates: X axis at #{@vertex[0]}, Y axis at #{@vertex[1]}"
     end  
     @points = additional_points(a, b, c, @vertex)
   end
