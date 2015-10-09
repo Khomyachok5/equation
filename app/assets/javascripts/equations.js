@@ -68,12 +68,8 @@ $(function() {
 
 function drawChart(index, x_points, y_points) { /* chart = */ 
 
-  alert(typeof(parseInt(x_points[0])));
-
   x_points.unshift('data_x');
   y_points.unshift('data_y');
-
-  alert(x_points);
 
   c3.generate({
 

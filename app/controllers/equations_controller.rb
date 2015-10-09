@@ -26,12 +26,14 @@ class EquationsController < ApplicationController
   end
 
   def handle_input
+    @status = []
+    @total_pairs = []
     if params[:a_value] || params[:b_value] || params[:c_value]
       a = params[:a_value].to_i
       b = params[:b_value].to_i
       c = params[:c_value].to_i
 
-      calculate(a, b, c)
+      @total_pairs << calculate(a, b, c, @status)
       render template: "equations/calculate"
      
     elsif params[:file]
@@ -44,10 +46,6 @@ class EquationsController < ApplicationController
         end
         flash.notice = "The number of values supplied in the CSV file was not divisible by 3, so we added #{3 - (count % 3)} additional elements to be able to build the parabola. The arguments supplied now look as follows: #{@array}"
       end
-
-      @total_pairs = []
-      @status = []
-
 
       @array_split = @array.each_slice(3).each_with_index do |pair, i|
         @total_pairs << calculate(pair[0].to_i, pair[1].to_i, pair[2].to_i, @status)
