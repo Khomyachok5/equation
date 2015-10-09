@@ -74,7 +74,7 @@ function drawChart(index, x_points, y_points) { /* chart = */
 
   axis_x = [];
   axis_y = [];
-  for (var i = -5; i <= 5; i++) {
+  for (var i = -20; i <= 20; i++) {
     axis_x.push(i);
     axis_y.push(i);
   }
@@ -121,11 +121,11 @@ function drawChart(index, x_points, y_points) { /* chart = */
 
         grid: {
             y: {
-                  lines: [{value: 0, text: 'Y axis 0 value'}]
+                  lines: [{value: 0, text: 'X axis 0 value'}]
                 },
 
             x: {
-                  lines: [{value: 0, text: 'X axis 0 value'}]
+                  lines: [{value: 0, text: 'Y axis 0 value'}]
                 }
         }
     })
