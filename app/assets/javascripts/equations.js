@@ -22,8 +22,8 @@ $(function() {
     parent_array[index].forEach(function(entry) {
       
       for (var key in entry) {
-        x_points.push(parseInt(key));
-        y_points.push(parseInt(entry[key]))
+        x_points.push(parseFloat(key));
+        y_points.push(parseFloat(entry[key]))
       }
     });
 
@@ -99,8 +99,12 @@ function drawChart(index, x_points, y_points) { /* chart = */
            },
 
         x: {
+            type: 'category',
             show: true,
             tick: {
+              culling: {
+                max: 4 // the number of tick texts will be adjusted to less than this value
+              },
               multiline: false,
               values: x_points,
               },

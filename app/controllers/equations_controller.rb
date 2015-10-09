@@ -65,14 +65,13 @@ class EquationsController < ApplicationController
   def find_vertex(a, b, c)
     h = (-b)/(2*a)
     k = a*(h*h) + b*h + c
-    puts "THE VALUES OF H AND K ARE #{h} AND #{k}"
     [h, k]
   end
 
   def additional_points(a, b, c, vertex)
     coordinates = []
-    v_int = vertex.first.to_i
-    (v_int-10).upto(v_int+10) do |x|
+    #v_int = vertex.first.to_i
+    ((vertex.first-0.5)..(vertex.first+0.5)).step(0.1).each do |x| x.round(2)
       y = a*(x*x) + b*x + c
       coordinates << {x => y}
     end
