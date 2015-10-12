@@ -102,12 +102,12 @@ function drawChart(index, x_points, y_points) { /* chart = */
            },
 
         x: {
-            type: 'category',
+            //type: 'category',
             show: true,
             tick: {
-              culling: {
-                max: 4 // the number of tick texts will be adjusted to less than this value
-              },
+              //culling: {
+                //max: 4 // the number of tick texts will be adjusted to less than this value
+              //},
               multiline: false,
               values: x_points,
               },
