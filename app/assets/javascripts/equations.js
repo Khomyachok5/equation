@@ -22,6 +22,7 @@ $(function() {
     parent_array[index].forEach(function(entry) {
       
       for (var key in entry) {
+
         x_points.push(Number(Math.round(parseFloat(key)+'e2') +'e-2'));
         y_points.push(Number(Math.round(parseFloat(entry[key])+'e2') +'e-2'));
         //y_points.push(parseFloat(entry[key]))
@@ -74,7 +75,7 @@ function drawChart(index, x_points, y_points) { /* chart = */
   x_points.unshift('data_x');
   y_points.unshift('data_y');
   y_points.push(0)
-  //alert(y_points)
+  console.log(x_points);
 
   axis_x = [];
   axis_y = [];
