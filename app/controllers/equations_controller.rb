@@ -75,8 +75,8 @@ class EquationsController < ApplicationController
   private
 
   def check_arguments(a,b,c)
-    num_only = /\A[0-9]*$\z/
-    if a == 0 || !(a.validate(num_only)) || !(b.validate(num_only)) || !(c.validate(num_only))
+    num_only = /\A[0-9](\.[0-9]*$)?$+\z/
+    if a == 0 || (a.to_s.match(num_only)).nil? || (b.to_s.match(num_only)).nil? || (c.to_s.match(num_only)).nil?
       return false
     end
   end
