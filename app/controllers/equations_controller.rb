@@ -6,8 +6,11 @@ class EquationsController < ApplicationController
   end
 
   def calculate(a,b,c, status_array)
+    if check_arguments(a, b, c) == false
+      return false
+    end
+
     discriminant = find_discriminant(a, b, c)
-      #@answer =  "The discriminant of the equation is negative, there are no roots"
     @vertex = find_vertex(a, b, c)
     case
       when discriminant < 0
@@ -21,7 +24,7 @@ class EquationsController < ApplicationController
       when discriminant == 0
         x1 = (-b + sqrt(discriminant)) / 2*a
         status_array << "The values entered are #{a}, #{b}, #{c}. The discriminant of the equation is #{discriminant}. The root of the equation is #{x1}. The vertex of the parabola should be at the following co-ordinates: X axis at #{@vertex[0]}, Y axis at #{@vertex[1]}"
-    end  
+    end
     @points = additional_points(a, b, c, @vertex)
   end
 
@@ -33,7 +36,13 @@ class EquationsController < ApplicationController
       b = params[:b_value].to_f
       c = params[:c_value].to_f
 
-      @total_pairs << calculate(a, b, c, @status)
+      result = calculate(a, b, c, @status)
+      if result != false
+        @total_pairs << result
+      elsif result == false
+          return (flash.alert = "The value of \"a\" parameter can\'t be nill. Please change it to a different digit"; redirect_to root_path)
+      end
+      @total_pairs << result
       render template: "equations/calculate"
      
     elsif params[:file]
@@ -48,7 +57,12 @@ class EquationsController < ApplicationController
       end
 
       @array_split = @array.each_slice(3).each_with_index do |pair, i|
-        @total_pairs << calculate(pair[0].to_f, pair[1].to_f, pair[2].to_f, @status)
+        result = calculate(pair[0].to_f, pair[1].to_f, pair[2].to_f, @status)
+        if result != false
+          @total_pairs << result
+        elsif result == false
+          return (flash.alert = "Values in the CSV file are split into pairs of three digits where each one corresponds to \"a\", \"b\" and \"c\" parameter to the function. The value of \"a\" parameter can\'t be nill. Please change it to a different digit"; redirect_to root_path)
+        end
       end
       render template: "equations/calculate"
     end
@@ -57,6 +71,13 @@ class EquationsController < ApplicationController
   end
 
   private
+
+  def check_arguments(a,b,c)
+    if a == 0
+      
+      return false
+    end
+  end
 
   def find_discriminant(a, b, c)
     discriminant=(b*b)-(4*a*c)
