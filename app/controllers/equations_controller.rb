@@ -40,7 +40,9 @@ class EquationsController < ApplicationController
       if result != false
         @total_pairs << result
       elsif result == false
-          return (flash.alert = "The value of \"a\" parameter can\'t be nill. Please change it to a different digit"; redirect_to root_path)
+          return (flash.alert = "One of the requirements for building parabola was not satisfied. Please review the requirements and rectify input values: \n
+            The value of \"a\" parameter can\'t be nill. \n 
+            Input values must be numbers."; redirect_to root_path)
       end
       @total_pairs << result
       render template: "equations/calculate"
@@ -73,8 +75,8 @@ class EquationsController < ApplicationController
   private
 
   def check_arguments(a,b,c)
-    if a == 0
-      
+    num_only = /\A[0-9]*$\z/
+    if a == 0 || !(a.validate(num_only)) || !(b.validate(num_only)) || !(c.validate(num_only))
       return false
     end
   end
