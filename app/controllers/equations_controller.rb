@@ -10,6 +10,10 @@ class EquationsController < ApplicationController
       return false
     end
 
+    a = a.to_f
+    b = b.to_f
+    c = c.to_f
+
     discriminant = find_discriminant(a, b, c)
     @vertex = find_vertex(a, b, c)
     case
@@ -32,9 +36,9 @@ class EquationsController < ApplicationController
     @status = []
     @total_pairs = []
     if params[:a_value] || params[:b_value] || params[:c_value]
-      a = params[:a_value].to_f
-      b = params[:b_value].to_f
-      c = params[:c_value].to_f
+      a = params[:a_value]
+      b = params[:b_value]
+      c = params[:c_value]
 
       result = calculate(a, b, c, @status)
       if result != false
@@ -75,8 +79,7 @@ class EquationsController < ApplicationController
   private
 
   def check_arguments(a,b,c)
-    num_only = /\A[0-9](\.[0-9]*$)?$+\z/
-    if a == 0 || (a.to_s.match(num_only)).nil? || (b.to_s.match(num_only)).nil? || (c.to_s.match(num_only)).nil?
+    if a == '0' || numeric?(a) == false || numeric?(b) == false || numeric?(c) == false
       return false
     end
   end
@@ -99,5 +102,9 @@ class EquationsController < ApplicationController
       coordinates << {x => y}
     end
     coordinates
+  end
+
+  def numeric?(value)
+    Float(value) != nil rescue false
   end
 end
