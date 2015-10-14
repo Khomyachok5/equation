@@ -71,6 +71,8 @@ class EquationsController < ApplicationController
         end
       end
       render template: "equations/calculate"
+    else
+      return (flash.alert = "Neither the values for the form nor CSV file were submitted. Please, fill in the form or supply a CSV file with values"; redirect_to root_path)
     end
 
 
