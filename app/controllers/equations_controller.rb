@@ -60,6 +60,8 @@ class EquationsController < ApplicationController
           @array << 0
         end
         flash.notice = "The number of values supplied in the CSV file was not divisible by 3, so we added #{3 - (count % 3)} additional elements to be able to build the parabola. The arguments supplied now look as follows: #{@array}"
+      elsif count == 0
+        return (flash.alert = "An empty file was submitted. Please submit a file with valid values"; redirect_to root_path)
       end
 
       @array_split = @array.each_slice(3).each_with_index do |pair, i|
