@@ -1,17 +1,23 @@
-<%= form_tag input_path do%>
-  <%= label_tag "Please, enter values for a, b and c inputs: "%>
-  <br></br>
+<div class="row">
+  <div id="devise_form" class="col-md-8">
 
-  <%= render partial: "values" %>
-  <br></br>
-  <%= submit_tag 'Submit' %>
-<% end %>
-<hr>
-<br>
-<p>Alternatively, please select a CSV file to build multiple graphs</p>
-<%= form_tag input_path, multipart: true do%>
-  <%= file_field_tag :file %>
-  <br>
-  <br>
-  <%= submit_tag "Build the parabolas!" %>
-<% end %>
+    <%= form_tag input_path do%>
+      <%= label_tag "Please, enter values for a, b and c inputs: "%>
+      <br></br>
+
+      <%= render partial: "values" %>
+      <br></br>
+      <%= submit_tag 'Submit', class: "btn btn-default" %>
+    <% end %>
+    <hr>
+    <br>
+    <p>Alternatively, please select a CSV file to build multiple graphs</p>
+    <%= form_tag input_path, multipart: true, class: "form-group" do%>
+      <%= file_field_tag :file %>
+      <br>
+      <br>
+      <%= submit_tag "Build the parabolas!", class: "btn btn-default" %>
+    <% end %>
+
+    </div>
+</div>
