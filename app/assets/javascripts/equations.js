@@ -76,10 +76,10 @@ function drawChart(index, x_points, y_points) { /* chart = */
   x_points.unshift('data_x');
   y_points.unshift('data_y');
   y_points.push(0)
-  //console.log("x_points array values")
-  //console.log(x_points);
-  //console.log("y_points array values")
-  //console.log(y_points)
+  console.log("x_points array values")
+  console.log(x_points);
+  console.log("y_points array values")
+  console.log(y_points)
 
   axis_x = [];
   axis_y = [];
@@ -94,11 +94,15 @@ function drawChart(index, x_points, y_points) { /* chart = */
 
       axis: {
         y: {
+
+            label: {
+              text: 'Y axis',
+              position: 'outer-middle' },
             //center: y_points[1],         
             show: true,
             tick: {
                fit: true,
-               values: y_points, 
+               //values: y_points, 
               },
             padding : {
               top: 0,
@@ -109,12 +113,15 @@ function drawChart(index, x_points, y_points) { /* chart = */
         x: {
             //type: 'category',
             show: true,
+            label: {
+                text: 'X axis',
+                position: 'outer-center' },
             tick: {
               //culling: {
                 //max: 4 // the number of tick texts will be adjusted to less than this value
               //},
               multiline: false,
-              values: x_points,
+              //values: x_points,
               },
 
             }
@@ -122,28 +129,32 @@ function drawChart(index, x_points, y_points) { /* chart = */
 
       data: {
 
-        xs: {
-            'data_y': 'data_x'
-        },
+        //xs: {
+            //'data_y': 'data_x'
+        //},
 
-        x_data: 'data_x',
-        y_data: 'data_y',
+        x: 'data_x',
+        //y: 'data_y',
+        parabola: 'data_y',
+        //x_data: 'data_x',
+        //y_data: 'data_y',
 
         columns: [
           x_points,
           y_points
         ],
         type: 'spline'
+
       },
 
-        grid: {
-            y: {
-                  lines: [{value: 0, text: 'X axis 0 value', position: 'start'}]
-                },
+      grid: {
+        y: {
+            lines: [{value: 0, text: 'X axis 0 value', position: 'start'}]
+            },
 
-            x: {
-                  lines: [{value: 0, text: 'Y axis 0 value',  position: 'start'}]
-                }
+        x: {
+              lines: [{value: 0, text: 'Y axis 0 value',  position: 'start'}]
+            }
         }
     })
 
