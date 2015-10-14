@@ -74,7 +74,7 @@ $(function() {
 function drawChart(index, x_points, y_points) { /* chart = */ 
 
   x_points.unshift('data_x');
-  y_points.unshift('data_y');
+  y_points.unshift('parabola');
   y_points.push(0)
   console.log("x_points array values")
   console.log(x_points);
@@ -135,7 +135,7 @@ function drawChart(index, x_points, y_points) { /* chart = */
 
         x: 'data_x',
         //y: 'data_y',
-        parabola: 'data_y',
+        //parabola: 'parabola',
         //x_data: 'data_x',
         //y_data: 'data_y',
 
