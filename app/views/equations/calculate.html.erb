@@ -1,18 +1,16 @@
-<%= content_tag :div, '', id: "charts_placeholder", data: {parabolas: @total_pairs} do %>
-  <%- @total_pairs.each_with_index do |pair, index| %>
-    <%= content_tag :div, '', id: "chart_#{index}" do %>
-    <% end %>
-    <br>
-    <br>
-    <div id="answer">
-      <%= @status[index] %>
-    </div>
-    <br>
-    <br>
-    <hr>
-    <br>
-    <br>    
-  <% end %>
+<%= content_tag :div, '', id: "charts_placeholder", data: {parabolas: @total_pairs} %>
+<%- @total_pairs.each_with_index do |pair, index| %>
+  <%= content_tag :div, '', id: "chart_#{index}" %>
+  <br>
+  <br>
+  <div id="answer">
+    <%= @status[index] %>
+  </div>
+  <br>
+  <br>
+  <hr>
+  <br>
+  <br>    
 <% end %>
 
 

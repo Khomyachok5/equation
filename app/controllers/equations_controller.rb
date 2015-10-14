@@ -48,7 +48,7 @@ class EquationsController < ApplicationController
             The value of \"a\" parameter can\'t be nill. \n 
             Input values must be numbers."; redirect_to root_path)
       end
-      @total_pairs << result
+      #@total_pairs << result
       render template: "equations/calculate"
      
     elsif params[:file]
@@ -102,7 +102,6 @@ class EquationsController < ApplicationController
       #y = (y * 1000).floor / 1000.0
       coordinates << {x => y}
     end
-    puts "THE VALUE OF COORDINATES IS #{coordinates}"
     coordinates
   end
 
