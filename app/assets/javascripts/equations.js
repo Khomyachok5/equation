@@ -148,7 +148,7 @@ function drawChart(index, x_points, y_points) { /* chart = */
     })
 
     chart.resize({
-    height: 1400,
-    width: 1500
+    height: 1200,
+    width: 1200
     });
   };
