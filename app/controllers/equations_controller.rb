@@ -49,6 +49,7 @@ class EquationsController < ApplicationController
             Input values must be numbers."; redirect_to root_path)
       end
       #@total_pairs << result
+      @no_common_chart = 1
       render template: "equations/calculate"
      
     elsif params[:file]

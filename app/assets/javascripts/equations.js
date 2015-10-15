@@ -48,7 +48,6 @@ function drawChart(index, x_points, y_points) {
             show: true,
             tick: {
                fit: true,
-               //values: y_points, 
               },
             padding : {
               top: 0,
