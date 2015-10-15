@@ -181,14 +181,42 @@ function drawMasterChart(all_parabolas) {
     (all_parabolas[index])[0].unshift('x_points_'.concat(index));
     (all_parabolas[index])[1].unshift('y_points_'.concat(index));
 
-    console.log("THE MODIFIED INDEX IS")
-    console.log((all_parabolas[index])[0])
+    //console.log("THE MODIFIED INDEX IS")
+    //console.log((all_parabolas[index])[0])
   };
 
   //data_values_deps = (for (index = 0; index < all_parabolas.length; ++index) {
     //'data_y'.concat(index): 'data_x'.concat(index); })
 
   //console.log(data_values_deps)
+
+  var a = {
+          //'y_points_0': 'x_points_0',
+          //'y_points_1': 'x_points_1',
+          //'y_points_2': 'x_points_2',
+          //if (typeof(all_parabolas[3]) != "undefined") {'y_points_3': 'x_points_3'}
+        }
+
+    var b = [
+          //(all_parabolas[0])[0],
+          //(all_parabolas[0])[1],
+          //(all_parabolas[1])[0], //x_points_1,
+          //(all_parabolas[1])[1], //y_points_1,
+          //(all_parabolas[2])[0], //x_points_2,
+          //(all_parabolas[2])[1]  //y_points_2
+        ]
+
+  for (index = 0; index < all_parabolas.length; ++index) { 
+    a['y_points_'.concat(index)] = 'x_points_'.concat(index);
+    b.push((all_parabolas[index])[0]);
+    b.push((all_parabolas[index])[1]);
+     }
+
+
+
+
+
+
 
 //  /*
     chart = c3.generate({
@@ -232,11 +260,7 @@ function drawMasterChart(all_parabolas) {
 
       data: {
 
-        xs: {
-          'y_points_0': 'x_points_0',
-          'y_points_1': 'x_points_1',
-          'y_points_2': 'x_points_2'
-        },
+        xs: a,
 
         //x: 'data_x',
         //y: 'data_y',
@@ -244,14 +268,7 @@ function drawMasterChart(all_parabolas) {
         //x_data: 'data_x',
         //y_data: 'data_y',
 
-        columns: [
-          (all_parabolas[0])[0],
-          (all_parabolas[0])[1],
-          (all_parabolas[1])[0], //x_points_1,
-          (all_parabolas[1])[1], //y_points_1,
-          (all_parabolas[2])[0], //x_points_2,
-          (all_parabolas[2])[1]  //y_points_2
-        ],
+        columns: b,
         type: 'spline'
 
       },
