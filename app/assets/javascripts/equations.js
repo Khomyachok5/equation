@@ -3,6 +3,7 @@ $(function() {
 
   var parent_array = $('#charts_placeholder').data('parabolas');
   // alert(parent_array.length);
+  var all_parabolas = []
 
 
   for (index = 0; index < parent_array.length; ++index) {
@@ -24,11 +25,17 @@ $(function() {
       for (var key in entry) {
         x_points.push(Number(Math.round(parseFloat(key)+'e2') +'e-2'));
         y_points.push(Number(Math.round(parseFloat(entry[key])+'e2') +'e-2'));
+
         //y_points.push(parseFloat(entry[key]))
         //console.log(x_points);
-
       }
     });
+
+    all_parabolas[index] = [];
+    copy_x_points = [];
+    copy_y_points = [];
+    all_parabolas[index].push(copy_x_points = x_points.slice(0));
+    all_parabolas[index].push(copy_y_points = y_points.slice(0));
 
     //Number(Math.round(1.005+'e2')+'e-2');
 
@@ -39,11 +46,13 @@ $(function() {
     } ); */
 
     //alert(y_points);
-    drawChart(index, x_points, y_points)
+    drawChart(index, x_points, y_points);
+
+    
   }
     
-    
-
+  //console.log(all_parabolas)
+  drawMasterChart(all_parabolas);
   //alert(x_points);
 
 
@@ -72,21 +81,20 @@ $(function() {
 
 
 function drawChart(index, x_points, y_points) { /* chart = */ 
-
   x_points.unshift('data_x');
   y_points.unshift('parabola');
   y_points.push(0)
-  console.log("x_points array values")
-  console.log(x_points);
-  console.log("y_points array values")
-  console.log(y_points)
+  //console.log("x_points array values")
+  //console.log(x_points);
+  //console.log("y_points array values")
+  //console.log(y_points)
 
-  axis_x = [];
-  axis_y = [];
-  for (var i = -20; i <= 20; i++) {
-    axis_x.push(i);
-    axis_y.push(i);
-  }
+  //axis_x = [];
+  //axis_y = [];
+  //for (var i = -20; i <= 20; i++) {
+    //axis_x.push(i);
+    //axis_y.push(i);
+  //}
 
   chart = c3.generate({
 
@@ -162,4 +170,106 @@ function drawChart(index, x_points, y_points) { /* chart = */
     height: 1200,
     width: 1200
     });
+  };
+
+
+function drawMasterChart(all_parabolas) {
+
+  //prepare the data for use in the chart
+
+  for (index = 0; index < all_parabolas.length; ++index) {
+    (all_parabolas[index])[0].unshift('x_points_'.concat(index));
+    (all_parabolas[index])[1].unshift('y_points_'.concat(index));
+
+    console.log("THE MODIFIED INDEX IS")
+    console.log((all_parabolas[index])[0])
+  };
+
+  //data_values_deps = (for (index = 0; index < all_parabolas.length; ++index) {
+    //'data_y'.concat(index): 'data_x'.concat(index); })
+
+  //console.log(data_values_deps)
+
+//  /*
+    chart = c3.generate({
+
+      bindto: '#chart_all',
+
+      axis: {
+        y: {
+
+            label: {
+              text: 'Y axis',
+              position: 'outer-middle' },
+            //center: y_points[1],         
+            show: true,
+            tick: {
+               fit: true,
+               //values: y_points, 
+              },
+            padding : {
+              top: 0,
+              bottom : 20
+            }
+           },
+
+        x: {
+            //type: 'category',
+            show: true,
+            label: {
+                text: 'X axis',
+                position: 'outer-center' },
+            tick: {
+              //culling: {
+                //max: 4 // the number of tick texts will be adjusted to less than this value
+              //},
+              multiline: false,
+              //values: x_points,
+              },
+
+            }
+      },
+
+      data: {
+
+        xs: {
+          'y_points_0': 'x_points_0',
+          'y_points_1': 'x_points_1',
+          'y_points_2': 'x_points_2'
+        },
+
+        //x: 'data_x',
+        //y: 'data_y',
+        //parabola: 'parabola',
+        //x_data: 'data_x',
+        //y_data: 'data_y',
+
+        columns: [
+          (all_parabolas[0])[0],
+          (all_parabolas[0])[1],
+          (all_parabolas[1])[0], //x_points_1,
+          (all_parabolas[1])[1], //y_points_1,
+          (all_parabolas[2])[0], //x_points_2,
+          (all_parabolas[2])[1]  //y_points_2
+        ],
+        type: 'spline'
+
+      },
+
+      grid: {
+        y: {
+            lines: [{value: 0, text: 'X axis 0 value', position: 'start'}]
+            },
+
+        x: {
+              lines: [{value: 0, text: 'Y axis 0 value',  position: 'start'}]
+            }
+        }
+    })
+
+    chart.resize({
+    height: 1200,
+    width: 1200
+    });
+//  */
   };

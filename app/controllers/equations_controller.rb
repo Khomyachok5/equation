@@ -101,7 +101,7 @@ class EquationsController < ApplicationController
   def additional_points(a, b, c, vertex)
     coordinates = []
     #v_int = vertex.first.to_i
-    ((vertex.first-0.5)..(vertex.first+0.5)).step(0.1).each do |x| x = x.round(2)
+    ((vertex.first-15)..(vertex.first+15)).step(1).each do |x| x = x.round(2)
       y = (a*(x*x) + b*x + c).round(2)
       #y = (y * 1000).floor / 1000.0
       coordinates << {x => y}
