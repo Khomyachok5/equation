@@ -1,5 +1,9 @@
-<%= content_tag :div, '', id: "charts_placeholder", data: {parabolas: @total_pairs} %>
+<%= content_tag :div, '', id: "charts_placeholder", data: {parabolas: @total_pairs} do %>
+  <p>This is a general chart for all parabolas. This allows for an evaluation of parabola placement against other parabolas. Please, note that the scale of the chart makes parabolas involving large values display only a small portions of them. Each parabola has its own chart below with greater information regarding its vertext and roots.</p>
 <%= content_tag :div, '', id: "chart_all" %>
+  <hr>
+<% end %>
+
 <%- @total_pairs.each_with_index do |pair, index| %>
   <%= content_tag :div, '', id: "chart_#{index}" %>
   <br>
