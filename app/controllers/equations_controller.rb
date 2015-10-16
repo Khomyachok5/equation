@@ -48,7 +48,6 @@ class EquationsController < ApplicationController
             The value of \"a\" parameter can\'t be nill. \n 
             Input values must be numbers."; redirect_to root_path)
       end
-      #@total_pairs << result
       @no_common_chart = 1
       render template: "equations/calculate"
      
@@ -66,7 +65,7 @@ class EquationsController < ApplicationController
       end
 
       @array_split = @array.each_slice(3).each_with_index do |pair, i|
-        result = calculate(pair[0].to_f, pair[1].to_f, pair[2].to_f, @status)
+        result = calculate(pair[0], pair[1], pair[2], @status)
         if result != false
           @total_pairs << result
         elsif result == false
@@ -84,7 +83,7 @@ class EquationsController < ApplicationController
   private
 
   def check_arguments(a,b,c)
-    if a == '0' || numeric?(a) == false || numeric?(b) == false || numeric?(c) == false
+    if a == '0' || a == 0.0 || numeric?(a) == false || numeric?(b) == false || numeric?(c) == false
       return false
     end
   end
