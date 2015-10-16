@@ -53,7 +53,11 @@ class EquationsController < ApplicationController
      
     elsif params[:file]
       file = params[:file].read
-      @array = CSV.parse(file).first
+      if !check_file_validity(file)
+        return (flash.alert = "Invalid CSV file"; redirect_to root_path)
+      else
+        @array = CSV.parse(file).first
+      end
       count = @array.count
       if count % 3 != 0
         (3 - (count % 3)).times do
@@ -83,7 +87,7 @@ class EquationsController < ApplicationController
   private
 
   def check_arguments(a,b,c)
-    if a == '0' || a == 0.0 || numeric?(a) == false || numeric?(b) == false || numeric?(c) == false
+    if a == '0' || a == 0.0 || !numeric?(a) || !numeric?(b) || !numeric?(c)
       return false
     end
   end
@@ -111,5 +115,14 @@ class EquationsController < ApplicationController
 
   def numeric?(value)
     Float(value) != nil rescue false
+  end
+
+  def check_file_validity(file)
+    begin
+      CSV.parse(file).first
+      true 
+    rescue CSV::MalformedCSVError
+      false
+    end
   end
 end

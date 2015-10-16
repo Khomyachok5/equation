@@ -33,10 +33,6 @@ function drawChart(index, x_points, y_points) {
   x_points.unshift('data_x');
   y_points.unshift('parabola');
   //y_points.push(0)
-  console.log("x_points array is")
-  console.log(x_points)
-  console.log("y_points array is")
-  console.log(y_points)
 
 
   chart = c3.generate({
