@@ -2,7 +2,6 @@ $(document).ready(function() {
 
 if ($('#charts_placeholder').length != 0) {
   $(function() {
-    console.log( "ready!" );
 
     var parent_array = $('#charts_placeholder').data('parabolas');
     var all_parabolas = []
@@ -178,7 +177,6 @@ function drawMasterChart(all_parabolas) {
 };
 
 if ($('#form').length != 0) {
-  $(document).ready(function validate_inputs() {
     collection = $( "input[name*='_value']" )
 
     for (index = 0; index < collection.length; ++index) {
@@ -192,7 +190,6 @@ if ($('#form').length != 0) {
             $('#flash_placeholder').text('');
         })
       }
-  })
 }
 
 })
