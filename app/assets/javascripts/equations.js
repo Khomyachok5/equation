@@ -175,12 +175,16 @@ function drawMasterChart(all_parabolas) {
 
 $(document).ready(function validate_inputs() {
   collection = $( "input[name*='_value']" )
+
   for (index = 0; index < collection.length; ++index) {
     collection[index].addEventListener("change", function() {
       //-----------------------------------------------
         if ((/^[0-9]+(?:\.[0-9]+)?$/.test(this.value)) != true)
           //alert(this.value)
           $('#flash_placeholder').text('Please, enter a numeric value');
+
+        if (((/^[0-9]+(?:\.[0-9]+)?$/.test(collection[0].value)) == true) && ((/^[0-9]+(?:\.[0-9]+)?$/.test(collection[1].value)) == true) && ((/^[0-9]+(?:\.[0-9]+)?$/.test(collection[2].value)) == true))
+          $('#flash_placeholder').text('');
       })
     }
 })
