@@ -1,4 +1,4 @@
-$(function() {
+/* $(function() {
   console.log( "ready!" );
 
   var parent_array = $('#charts_placeholder').data('parabolas');
@@ -171,4 +171,16 @@ function drawMasterChart(all_parabolas) {
     height: 1200,
     width: 1200
     });
-  };
+}; */
+
+$(document).ready(function validate_inputs() {
+    $( "input[name*='_value']" ).each(function(entry) {
+      //-----------------------------------------------
+      entry.change(function() {
+
+      //-----------------------------------------------
+        if(/\D/.test(entry.value))
+          alert("Please, enter a numeric value")
+      })
+    })
+  })
