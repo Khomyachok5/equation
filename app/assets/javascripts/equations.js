@@ -1,32 +1,36 @@
-/* $(function() {
-  console.log( "ready!" );
+$(document).ready(function() {
 
-  var parent_array = $('#charts_placeholder').data('parabolas');
-  var all_parabolas = []
+if ($('#charts_placeholder').length != 0) {
+  $(function() {
+    console.log( "ready!" );
 
-  for (index = 0; index < parent_array.length; ++index) {
-    var x_points = [];
-    var y_points = [];
+    var parent_array = $('#charts_placeholder').data('parabolas');
+    var all_parabolas = []
 
-    parent_array[index].forEach(function(entry) {
+    for (index = 0; index < parent_array.length; ++index) {
+      var x_points = [];
+      var y_points = [];
+
+      parent_array[index].forEach(function(entry) {
+        
+        for (var key in entry) {
+          x_points.push(Number(Math.round(parseFloat(key)+'e2') +'e-2'));
+          y_points.push(Number(Math.round(parseFloat(entry[key])+'e2') +'e-2'));
+        }
+      });
+
+      all_parabolas[index] = [];
+      copy_x_points = [];
+      copy_y_points = [];
+      all_parabolas[index].push(copy_x_points = x_points.slice(0));
+      all_parabolas[index].push(copy_y_points = y_points.slice(0));
+
+      drawChart(index, x_points, y_points);
+    }
       
-      for (var key in entry) {
-        x_points.push(Number(Math.round(parseFloat(key)+'e2') +'e-2'));
-        y_points.push(Number(Math.round(parseFloat(entry[key])+'e2') +'e-2'));
-      }
-    });
-
-    all_parabolas[index] = [];
-    copy_x_points = [];
-    copy_y_points = [];
-    all_parabolas[index].push(copy_x_points = x_points.slice(0));
-    all_parabolas[index].push(copy_y_points = y_points.slice(0));
-
-    drawChart(index, x_points, y_points);
-  }
-    
-  drawMasterChart(all_parabolas);
-});
+    drawMasterChart(all_parabolas);
+  });
+}
 
 
 function drawChart(index, x_points, y_points) {
@@ -171,20 +175,24 @@ function drawMasterChart(all_parabolas) {
     height: 1200,
     width: 1200
     });
-}; */
+};
 
-$(document).ready(function validate_inputs() {
-  collection = $( "input[name*='_value']" )
+if ($('#form').length != 0) {
+  $(document).ready(function validate_inputs() {
+    collection = $( "input[name*='_value']" )
 
-  for (index = 0; index < collection.length; ++index) {
-    collection[index].addEventListener("change", function() {
-      //-----------------------------------------------
-        if (!(/^[0-9]+(?:\.[0-9]+)?$/.test(this.value)))
-          //alert(this.value)
-          $('#flash_placeholder').text('Please, enter a numeric value');
+    for (index = 0; index < collection.length; ++index) {
+      collection[index].addEventListener("change", function() {
+        //-----------------------------------------------
+          if (!(/^[0-9]+(?:\.[0-9]+)?$/.test(this.value)))
+            //alert(this.value)
+            $('#flash_placeholder').text('Please, enter a numeric value');
 
-        if (((/^[0-9]+(?:\.[0-9]+)?$/.test(collection[0].value))) && ((/^[0-9]+(?:\.[0-9]+)?$/.test(collection[1].value))) && ((/^[0-9]+(?:\.[0-9]+)?$/.test(collection[2].value))))
-          $('#flash_placeholder').text('');
-      })
-    }
+          if (((/^[0-9]+(?:\.[0-9]+)?$/.test(collection[0].value))) && ((/^[0-9]+(?:\.[0-9]+)?$/.test(collection[1].value))) && ((/^[0-9]+(?:\.[0-9]+)?$/.test(collection[2].value))))
+            $('#flash_placeholder').text('');
+        })
+      }
+  })
+}
+
 })
