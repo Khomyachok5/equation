@@ -175,11 +175,10 @@ function drawMasterChart(all_parabolas) {
 
 $(document).ready(function validate_inputs() {
   collection = $( "input[name*='_value']" )
-  //console.log(collection)
   for (index = 0; index < collection.length; ++index) {
     collection[index].addEventListener("change", function() {
       //-----------------------------------------------
-        if(/\D/.test(this.value))
+        if ((/^[0-9]+(?:\.[0-9]+)?$/.test(this.value)) != true)
           //alert(this.value)
           $('#flash_placeholder').text('Please, enter a numeric value');
       })
