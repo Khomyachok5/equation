@@ -180,7 +180,8 @@ $(document).ready(function validate_inputs() {
     collection[index].addEventListener("change", function() {
       //-----------------------------------------------
         if(/\D/.test(this.value))
-          alert(this.value)
+          //alert(this.value)
+          $('#flash_placeholder').text('Please, enter a numeric value');
       })
     }
 })
