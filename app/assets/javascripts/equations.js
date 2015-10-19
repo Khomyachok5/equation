@@ -174,13 +174,13 @@ function drawMasterChart(all_parabolas) {
 }; */
 
 $(document).ready(function validate_inputs() {
-    $( "input[name*='_value']" ).each(function(entry) {
+  collection = $( "input[name*='_value']" )
+  //console.log(collection)
+  for (index = 0; index < collection.length; ++index) {
+    collection[index].addEventListener("change", function() {
       //-----------------------------------------------
-      entry.change(function() {
-
-      //-----------------------------------------------
-        if(/\D/.test(entry.value))
-          alert("Please, enter a numeric value")
+        if(/\D/.test(this.value))
+          alert(this.value)
       })
-    })
-  })
+    }
+})
