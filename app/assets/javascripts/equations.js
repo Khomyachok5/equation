@@ -90,7 +90,15 @@ function drawChart(index, x_points, y_points) {
         x: {
               lines: [{value: 0, text: 'Y axis 0 value',  position: 'start'}]
             }
-        }
+        },
+
+      tooltip: {
+          format: {
+              title: function (d) { return 'X axis: ' + d; },
+              value: function (value, ratio, id, index) { return "Y axis: ".concat(value); }
+  //            value: d3.format(',') // apply this format to both y and y2
+          }
+      } 
     })
 
     chart.resize({
@@ -167,7 +175,20 @@ function drawMasterChart(all_parabolas) {
         x: {
               lines: [{value: 0, text: 'Y axis 0 value',  position: 'start'}]
             }
-        }
+        },
+
+      tooltip: {
+          format: {
+              //name: function (name, ratio, id, index) { return name; },
+              title: function (d) { return 'X axis value: ' + d; },
+              //value: function (value, ratio, id) {
+                  //var format = id === 'data1' ? d3.format('Y axis') : d3.format('Y axis');
+                  //return format(value);
+              value: function (value, ratio, id, index) { return "Y axis: ".concat(value); }
+              
+  //            value: d3.format(',') // apply this format to both y and y2
+          }
+      }      
     })
 
     chart.resize({
