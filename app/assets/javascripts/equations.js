@@ -203,13 +203,13 @@ if ($('#form').length != 0) {
     for (index = 0; index < collection.length; ++index) {
       collection[index].addEventListener("change", function() {
         //-----------------------------------------------
-          if (!(/^[0-9]+(?:\.[0-9]+)?$/.test(this.value))) {
+          if (!(/^\-?[0-9]+(?:\.[0-9]+)?$/.test(this.value))) {
             //alert(this.value)
             $('#flash_placeholder').addClass('alert alert alert-danger')
             $('#flash_placeholder').text('Please, enter a numeric value');
             $("form[name=equation_form] input[name=commit]").prop('disabled', true); }
 
-          if (((/^[0-9]+(?:\.[0-9]+)?$/.test(collection[0].value))) && ((/^[0-9]+(?:\.[0-9]+)?$/.test(collection[1].value))) && ((/^[0-9]+(?:\.[0-9]+)?$/.test(collection[2].value)))) {
+          if (((/^\-?[0-9]+(?:\.[0-9]+)?$/.test(collection[0].value))) && ((/^\-?[0-9]+(?:\.[0-9]+)?$/.test(collection[1].value))) && ((/^\-?[0-9]+(?:\.[0-9]+)?$/.test(collection[2].value)))) {
             $('#flash_placeholder').removeClass('alert alert alert-danger')
             $('#flash_placeholder').text('');
             $("form[name=equation_form] input[name=commit]").prop('disabled', false); }
