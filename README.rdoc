@@ -1,3 +1,45 @@
+== Overview
+
+The application is used to build parabolas based on user input either into the form or via a CSV file. Only full quadratic equations are solved, the application required the submission of at least three values. In case of a CSV file submission the application splits the suplied values in pairs of three. If it encounters a number of parameters that is not evenly divisible by 3 it adds 0 values to the list of the supplied values. 
+
+Before actually building the graph, the aplication checks the relevance of user input:
+
+  * In the form, numericality of user input is validated. Float values are possible and should have a period delimiter
+
+  * Values in CSV file should be delimited by commas and be placed on the single line. Subsequent lines will not be read.
+
+  * If the application receives a malformed CSV file, the user is notified and the file will not be processed
+
+  * Empty user input is not allowed
+
+For CSV file submissions, a aster graph will be displayed, showing an approximate position of each parabola against the others. A separate graph is then generated for each parabola that shows it in closer proximity.
+
+== Technical details
+
+Equation is calculated and subsequently solved on the Rails side, whereas graphing is made possible by C3.js, a D3.js-based Javascript library.
+
+The application is not using database backend, ActiveRecord was removed, making the application readily deployable.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 == README
 
 This README would normally document whatever steps are necessary to get the
