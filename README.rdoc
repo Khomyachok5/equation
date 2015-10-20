@@ -12,59 +12,10 @@ Before actually building the graph, the aplication checks the relevance of user 
 
   * Empty user input is not allowed
 
-For CSV file submissions, a aster graph will be displayed, showing an approximate position of each parabola against the others. A separate graph is then generated for each parabola that shows it in closer proximity.
+For CSV file submissions, a master graph will be displayed, showing an approximate position of each parabola against the others. A separate graph is then generated for each parabola that shows it in closer proximity.
 
 == Technical details
 
 Equation is calculated and subsequently solved on the Rails side, whereas graphing is made possible by C3.js, a D3.js-based Javascript library.
 
 The application is not using database backend, ActiveRecord was removed, making the application readily deployable.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
