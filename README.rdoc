@@ -19,3 +19,16 @@ For CSV file submissions, a master graph will be displayed, showing an approxima
 Equation is calculated and subsequently solved on the Rails side, whereas graphing is made possible by C3.js, a D3.js-based Javascript library.
 
 The application is not using database backend, ActiveRecord was removed, making the application readily deployable.
+
+== Deployment
+
+Run the following commands:
+
+git clone git@github.com:Khomyachok5/equation.git
+
+cd equation
+
+bundle
+
+rails s
+
