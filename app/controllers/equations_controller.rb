@@ -14,16 +14,11 @@ class EquationsController < ApplicationController
       b = params[:b_value]
       c = params[:c_value]
 
-      result = EquationSolver.calculate(a, b, c, @status)
-      if result != false
-        @total_pairs << result
-      elsif result == false
-          return (flash.alert = "One of the requirements for building parabola was not satisfied. Please review the requirements and rectify input values: \n
-            The value of \"a\" parameter can\'t be nill. \n 
-            Input values must be numbers."; redirect_to root_path)
+      if handle_form(a, b, c)
+      else
+        return (flash.alert = "One of the requirements for building parabola was not satisfied. Please review the requirements and rectify input values: \nThe value of \"a\" parameter can\'t be nill. \n Input values must be numbers."; redirect_to root_path)
       end
-      @no_common_chart = 1
-      render template: "equations/calculate"
+
      
     elsif params[:file]
       file = params[:file].read
@@ -54,5 +49,18 @@ class EquationsController < ApplicationController
     else
       return (flash.alert = "Neither the values for the form nor CSV file were submitted. Please, fill in the form or supply a CSV file with values"; redirect_to root_path)
     end
+  end
+
+  def handle_form(a, b, c)
+    @status = []
+    @total_pairs = []
+    result = EquationSolver.calculate(a, b, c, @status)
+    if result != false
+      @total_pairs << result
+    else
+        return false
+    end
+    @no_common_chart = 1
+    render template: "equations/calculate"
   end
 end
