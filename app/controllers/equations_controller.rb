@@ -32,6 +32,10 @@ class EquationsController < ApplicationController
         return (flash.alert = "An empty file was submitted. Please submit a file with valid values"; redirect_to root_path)
       end
 
+      if count_values(@array)
+        @no_common_chart = 1
+      end
+
       if !array_slice(@array)
         return (flash.alert = "Values in the CSV file are split into pairs of three digits where each one corresponds to \"a\", \"b\" and \"c\" parameter to the function. The value of \"a\" parameter can\'t be nill. Please change it to a different digit"; redirect_to root_path)
       end
@@ -75,6 +79,14 @@ class EquationsController < ApplicationController
       flash.notice = "The number of values supplied in the CSV file was not divisible by 3, so we added #{3 - (count % 3)} additional elements to be able to build the parabola. The arguments supplied now look as follows: #{@array}"
       array
     elsif count == 0
+      false
+    end
+  end
+
+  def count_values(array)
+    if array.count == 3
+      true
+    else
       false
     end
   end
