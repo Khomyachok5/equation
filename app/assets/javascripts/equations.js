@@ -201,7 +201,7 @@ if ($('#form').length != 0) {
     collection = $( "input[name*='_value']" )
 
     for (index = 0; index < collection.length; ++index) {
-      collection[index].addEventListener("change", function() {
+      $(collection[index]).bind("input propertychange", function() {
         //-----------------------------------------------
           if (!(/^\-?[0-9]+(?:\.[0-9]+)?$/.test(this.value))) {
             //alert(this.value)
